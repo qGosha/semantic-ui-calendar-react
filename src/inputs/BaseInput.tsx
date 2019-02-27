@@ -65,6 +65,7 @@ export interface BaseInputProps {
   animation?: SemanticTRANSITIONS;
   /** Moment date localization. */
   localization?: string;
+  hideOnScroll?: boolean;
 }
 
 export interface MarkedValuesProps {

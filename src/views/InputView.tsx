@@ -117,6 +117,7 @@ interface InputViewProps {
   pickerWidth?: string;
   /** Style object for picker. */
   pickerStyle?: object;
+  hideOnScroll: boolean;
 }
 
 class InputView extends React.Component<InputViewProps, any> {
@@ -129,6 +130,7 @@ class InputView extends React.Component<InputViewProps, any> {
     animation: 'scale',
     duration: 200,
     iconPosition: 'right',
+    hideOnScroll: true,
   };
 
   private inputNode: HTMLElement | undefined;
@@ -158,6 +160,7 @@ class InputView extends React.Component<InputViewProps, any> {
       pickerStyle,
       iconPosition,
       icon,
+      hideOnScroll,
       ...rest
     } = this.props;
 
@@ -263,7 +266,10 @@ class InputView extends React.Component<InputViewProps, any> {
   }
 
   private setScrollListener() {
-    window.addEventListener('scroll', this.scrollListener);
+    const { hideOnScroll } = this.props;
+    if (hideOnScroll) {
+      window.addEventListener('scroll', this.scrollListener);
+    }
   }
 
   private unsetScrollListener() {
